@@ -1,0 +1,15 @@
+.note {
+  margin-top: 1.5rem;
+  font-size: var(--text-small);
+  font-style: italic;
+  color: var(--color-text-muted);
+  max-width: 36rem;
+}
+
+.actions {
+  margin-top: 2rem;
+}
+
+.full {
+  min-height: 100%;
+}

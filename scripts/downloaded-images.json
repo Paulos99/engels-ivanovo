@@ -1,0 +1,34 @@
+[
+  {
+    "file": "interior/hero.jpg",
+    "bytes": 771574
+  },
+  {
+    "file": "interior/space-wide.jpg",
+    "bytes": 232540
+  },
+  {
+    "file": "interior/main.jpg",
+    "bytes": 217060
+  },
+  {
+    "file": "coffee/hero.jpg",
+    "bytes": 280270
+  },
+  {
+    "file": "food/food-1.jpg",
+    "bytes": 218166
+  },
+  {
+    "file": "food/food-2.jpg",
+    "bytes": 213950
+  },
+  {
+    "file": "food/food-3.jpg",
+    "bytes": 235482
+  },
+  {
+    "file": "details/detail.jpg",
+    "bytes": 444844
+  }
+]

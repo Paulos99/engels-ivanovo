@@ -1,0 +1,20 @@
+.block {
+  max-width: 36rem;
+}
+
+.lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.line {
+  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  color: rgba(247, 245, 242, 0.88);
+}
+
+.line:last-child {
+  margin-top: 0.5rem;
+  color: var(--color-text-light);
+  font-family: var(--font-heading);
+}

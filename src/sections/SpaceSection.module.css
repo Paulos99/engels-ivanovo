@@ -1,0 +1,41 @@
+.quote {
+  margin-top: 1.5rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-style: italic;
+  color: var(--color-text);
+  max-width: 28rem;
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.full {
+  min-height: 100%;
+}
+
+.images {
+  display: grid;
+  grid-template-columns: 1fr min(38%, 220px);
+  gap: 1rem;
+  align-items: start;
+}
+
+.detail {
+  margin-top: auto;
+}
+
+@media (max-width: 640px) {
+  .images {
+    grid-template-columns: 1fr 120px;
+  }
+}

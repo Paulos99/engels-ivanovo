@@ -1,0 +1,32 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 767px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery > *:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  font-family: var(--font-heading);
+  font-size: var(--text-small);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.actions {
+  margin-top: 2rem;
+}

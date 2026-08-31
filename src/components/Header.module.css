@@ -1,0 +1,118 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--header-height);
+  transition: background var(--transition), backdrop-filter var(--transition), color var(--transition);
+}
+
+.light {
+  color: var(--color-text-light);
+}
+
+.light .navLink {
+  color: rgba(247, 245, 242, 0.75);
+}
+
+.light .navLink:hover,
+.light .navActive {
+  color: var(--color-text-light);
+}
+
+.light .menuBtn span {
+  background: var(--color-text-light);
+}
+
+.scrolled {
+  background: rgba(247, 245, 242, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-inline: var(--space-inline);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.logoImg {
+  height: 32px;
+  width: 32px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.nav {
+  display: none;
+  gap: 2rem;
+}
+
+.navLink {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: color var(--transition);
+}
+
+.navLink:hover,
+.navActive {
+  color: var(--color-text);
+}
+
+.menuBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 10px;
+}
+
+.menuBtn span {
+  display: block;
+  height: 1px;
+  background: var(--color-text);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+@media (min-width: 1024px) {
+  .nav {
+    display: flex;
+  }
+
+  .menuBtn {
+    display: none;
+  }
+}
