@@ -8,6 +8,7 @@ export function IntroSection() {
     <section className={`${shared.section} ${introStyles.intro}`} id="intro">
       <div className={shared.container}>
         <ScrollReveal>
+          <div className={shared.divider} aria-hidden />
           <h2 className={shared.title}>Кофе. Гастрономия. Пространство.</h2>
           <p className={shared.text}>{siteConfig.copy.intro}</p>
         </ScrollReveal>

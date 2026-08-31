@@ -11,7 +11,9 @@ export function SpaceSection() {
     <section className={shared.sectionAlt} id="space">
       <div className={shared.container}>
         <ScrollReveal>
-          <PlaceholderImage slot="space-wide" hoverable />
+          <div className={styles.wideImage}>
+            <PlaceholderImage slot="space-wide" hoverable />
+          </div>
         </ScrollReveal>
         <div className={shared.gridTwo} style={{ marginTop: 'clamp(2rem, 5vw, 4rem)' }}>
           <ScrollReveal>

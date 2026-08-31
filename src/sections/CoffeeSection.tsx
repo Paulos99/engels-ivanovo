@@ -11,7 +11,9 @@ export function CoffeeSection() {
       <div className={shared.container}>
         <div className={shared.gridTwo}>
           <ScrollReveal>
-            <PlaceholderImage slot="coffee-hero" hoverable className={styles.full} />
+            <div className={styles.imageWrap}>
+              <PlaceholderImage slot="coffee-hero" hoverable className={styles.full} />
+            </div>
           </ScrollReveal>
           <ScrollReveal>
             <p className={shared.eyebrow}>Кофе</p>

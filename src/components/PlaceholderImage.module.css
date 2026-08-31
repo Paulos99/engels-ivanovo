@@ -2,15 +2,15 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background:
-    linear-gradient(145deg, #e8e2da 0%, #d4cdc4 45%, #c5bdb3 100%);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(145deg, #ece6dd 0%, #ddd5ca 45%, #cfc6ba 100%);
 }
 
 .placeholder::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
   pointer-events: none;
 }
 
@@ -18,25 +18,29 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .hoverable:hover .image {
-  transform: scale(1.02);
+  transform: scale(1.03);
 }
 
 .label {
   position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  font-family: var(--font-ui);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(42, 40, 38, 0.45);
+  color: rgba(26, 25, 23, 0.4);
   pointer-events: none;
 }
 
 .fullHeight {
   min-height: 100%;
+}
+
+.heroImage {
+  border-radius: 0 !important;
 }
