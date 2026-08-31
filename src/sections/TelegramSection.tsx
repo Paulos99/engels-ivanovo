@@ -3,24 +3,25 @@ import styles from './TelegramSection.module.css'
 import { ScrollReveal } from '../components/ScrollReveal'
 import { Button } from '../components/Button'
 import { siteConfig } from '../data/site-config'
+import { publicUrl } from '../utils/publicUrl'
 
 const highlights = [
   {
     title: 'Летний сет',
     text: 'Сезонные позиции кухни — обновляем по мере появления новинок в меню.',
-    image: '/images/food/breakfast-porridge.jpg',
+    image: publicUrl('images/food/breakfast-porridge.jpg'),
     alt: 'Сезонное блюдо из летнего сета',
   },
   {
     title: 'Иван-чай с малиной и крапивой',
     text: 'Авторский напиток из меню бара — ягоды, трава, тёплая подача.',
-    image: '/images/food/croissant.jpg',
+    image: publicUrl('images/food/croissant.jpg'),
     alt: 'Напиток и выпечка в кофейне Энгельс',
   },
   {
     title: 'Сэндвич с говяжьими щечками',
     text: 'Гастрономия «на хлебушке» — сочное мясо в соусе хойсин.',
-    image: '/images/food/pastry-display.jpg',
+    image: publicUrl('images/food/pastry-display.jpg'),
     alt: 'Блюда и десерты на витрине',
   },
 ] as const

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { siteConfig } from '../data/site-config'
+import { publicUrl } from '../utils/publicUrl'
 import styles from './Header.module.css'
 
 const navItems = [
@@ -34,7 +35,7 @@ export function Header({ onMenuOpen, menuOpen }: HeaderProps) {
       <div className={styles.inner}>
         <Link to="/" className={styles.logo} aria-label="Энгельс — на главную">
           <img
-            src="/logo.jpg"
+            src={publicUrl('logo.jpg')}
             alt=""
             className={styles.logoImg}
             onError={(e) => {
