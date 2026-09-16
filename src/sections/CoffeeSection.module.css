@@ -1,7 +1,6 @@
 .section {
-  background: var(--color-accent);
-  color: var(--color-text);
-  background-image: radial-gradient(ellipse at 15% 15%, #e3edc655, transparent 65%);
+  background: #747774 url("../assets/mountain-stone-v2.webp") center / cover;
+  color: #fff;
   padding: clamp(44px, 7vw, 96px) var(--space-inline);
 }
 .inner {
@@ -9,10 +8,14 @@
   margin: auto;
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  gap: clamp(36px, 8vw, 120px);
+  gap: clamp(28px, 5vw, 72px);
   align-items: center;
 }
 .photo {
+  padding: 16px;
+  background: var(--color-bg);
+  box-shadow: 0 20px 50px #131a1440;
+  transform: rotate(-2deg);
   margin: 0;
   max-width: 370px;
 }
@@ -22,10 +25,10 @@
 .photo figcaption {
   font-size: 11px;
   margin-top: 12px;
-  color: #39462f;
+  color: var(--color-text-muted);
 }
 .copy > p:first-child {
-  color: #39462f;
+  color: #fff;
 }
 .copy h2 {
   font-size: clamp(44px, 5vw, 70px);
@@ -36,7 +39,7 @@
 }
 .text {
   margin-top: 28px;
-  color: #39462f;
+  color: #fff;
   font-size: 16px;
   line-height: 1.8;
 }
@@ -44,8 +47,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px 22px;
-  border-top: 1px solid #46573540;
-  border-bottom: 1px solid #46573540;
+  border-top: 1px solid #ffffff50;
+  border-bottom: 1px solid #ffffff50;
   padding: 18px 0;
   margin-top: 28px;
   font-size: 13px;
@@ -53,12 +56,12 @@
 .note {
   margin-top: 25px;
   font-size: 13px;
-  color: #39462f;
+  color: #fff;
 }
 .link {
   display: inline-flex;
   gap: 44px;
-  border-bottom: 1px solid #46573580;
+  border-bottom: 1px solid #ffffff80;
   padding: 10px 0;
   margin-top: 16px;
   font-size: 14px;
@@ -77,3 +80,6 @@
     font-size: 15px;
   }
 }
+
+.copy { padding: clamp(28px, 4vw, 52px); background: var(--color-accent); box-shadow: 0 22px 60px #141d2340; border-radius: 2px 2px 70px 2px; }
+@media (max-width: 767px) { .section { padding-block: 52px; } .copy { padding: 28px 24px 36px; border-radius: 2px 2px 46px 2px; } .photo { margin-top: 8px; } }

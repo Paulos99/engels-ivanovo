@@ -21,7 +21,7 @@
 .primary {
   composes: button;
   background: var(--color-accent);
-  color: var(--color-text);
+  color: #fff;
 }
 
 .primary:hover {
