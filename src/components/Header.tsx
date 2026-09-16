@@ -6,7 +6,7 @@ interface Props {
   menuOpen: boolean;
 }
 export function Header({ onMenuOpen, menuOpen }: Props) {
-  const { pathname } = useLocation();
+  const { hash } = useLocation();
   return (
     <header className={styles.header}>
       <a className={styles.skip} href="#main-content">
@@ -23,8 +23,8 @@ export function Header({ onMenuOpen, menuOpen }: Props) {
               to={item.href}
               className={styles.navLink}
               aria-current={
-                pathname === "/menu" && item.href === "/menu"
-                  ? "page"
+                hash.startsWith("#menu") && item.href === "/#menu"
+                  ? "true"
                   : undefined
               }
             >

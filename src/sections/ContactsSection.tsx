@@ -101,7 +101,7 @@ export function ContactsSection() {
           <Button href={siteConfig.links.route} variant="primary" external>
             Построить маршрут
           </Button>
-          <Button to="/menu" variant="ghost">
+          <Button to="/#menu" variant="ghost">
             Смотреть меню
           </Button>
         </div>

@@ -14,9 +14,9 @@ export function HeroSection() {
         <h1 className={styles.title}>
           Энгельс
           <span>
-            Вкус. Свет.
+            Хороший день
             <br />
-            <i>Ваше время.</i>
+            <i>начинается здесь.</i>
           </span>
         </h1>
         <p className={styles.description}>
@@ -25,7 +25,7 @@ export function HeroSection() {
           Заходите на Шереметевский, 52.
         </p>
         <div className={styles.actions}>
-          <Button to="/menu">
+          <Button to="/#menu">
             Открыть меню <span aria-hidden="true">↗</span>
           </Button>
           <a

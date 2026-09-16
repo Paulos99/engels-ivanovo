@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { lockScroll } from "../utils/lockScroll";
 import { Link } from "react-router-dom";
 import { navItems } from "./navigation";
 import { siteConfig } from "../data/site-config";
@@ -14,11 +15,7 @@ export function MobileNav({ open, onClose }: Props) {
     if (!dialog) return;
     if (open && !dialog.open) dialog.showModal();
     if (!open && dialog.open) dialog.close();
-    const old = document.body.style.overflow;
-    if (open) document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = old;
-    };
+    if (open) return lockScroll();
   }, [open]);
   return (
     <dialog

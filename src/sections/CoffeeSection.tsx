@@ -32,7 +32,7 @@ export function CoffeeSection() {
             <p className={styles.note}>
               Расскажите бариста, какой кофе вы любите.
             </p>
-            <Link className={styles.link} to="/menu#espresso">
+            <Link className={styles.link} to="/#menu-espresso">
               Выбрать напиток <span aria-hidden="true">↗</span>
             </Link>
           </div>

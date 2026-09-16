@@ -5,7 +5,7 @@ export function FloatingMenuButton() {
   const { pathname } = useLocation();
   return pathname === "/menu" ? null : (
     <nav className={styles.floating} aria-label="Быстрые действия">
-      <Link to="/menu">
+      <Link to="/#menu">
         Открыть меню <span aria-hidden="true">↗</span>
       </Link>
       <a

@@ -38,7 +38,7 @@ export function FoodSection() {
                 С завтрака, любимой чашки кофе или обеда между делами. Выбирайте
                 то, чего хочется сегодня.
               </p>
-              <Link className={styles.menuLink} to="/menu">
+              <Link className={styles.menuLink} to="/#menu">
                 Всё меню кухни <span aria-hidden="true">↗</span>
               </Link>
             </div>
@@ -64,7 +64,7 @@ export function FoodSection() {
               return (
                 item && (
                   <Link
-                    to={"/menu#" + item.category}
+                    to={"/#menu-" + item.category}
                     className={styles.pick}
                     key={item.id}
                   >

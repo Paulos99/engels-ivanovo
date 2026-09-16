@@ -1,13 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+
 import { menuCategories, menuItems, formatPrice } from "../data/menu";
 import styles from "./MenuPage.module.css";
 type MenuType = "kitchen" | "bar";
-export function MenuPage() {
-  const location = useLocation(),
-    navigate = useNavigate();
+export function MenuPage({ initialCategory = "" }: { initialCategory?: string }) {
   const categoryFromHash = menuCategories.find(
-    (c) => c.id === location.hash.slice(1),
+    (c) => c.id === initialCategory,
   );
   const [type, setType] = useState<MenuType>(
     categoryFromHash?.type ?? "kitchen",
@@ -36,18 +34,18 @@ export function MenuPage() {
     [type, query],
   );
   useEffect(() => {
-    const c = menuCategories.find((c) => c.id === location.hash.slice(1));
+    const c = menuCategories.find((c) => c.id === initialCategory);
     if (c) {
       setType(c.type);
       setQuery("");
       setActiveId(c.id);
     }
-  }, [location.hash]);
+  }, [initialCategory]);
   useEffect(() => {
-    if (!location.hash || query) return;
+    if (!initialCategory || query) return;
     const frame = requestAnimationFrame(() =>
       document
-        .getElementById(location.hash.slice(1))
+        .getElementById(initialCategory)
         ?.scrollIntoView({
           behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
             .matches
@@ -56,22 +54,18 @@ export function MenuPage() {
         }),
     );
     return () => cancelAnimationFrame(frame);
-  }, [location.hash, type, query]);
+  }, [initialCategory, type, query]);
   function changeType(next: MenuType) {
     setType(next);
     setQuery("");
     setActiveId("");
-    navigate("/menu", { replace: true });
-    window.scrollTo({ top: 0, behavior: "instant" });
+    document.getElementById("menu-scroll")?.scrollTo({ top: 0, behavior: "instant" });
   }
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link className={styles.back} to="/">
-          ← В «Энгельс»
-        </Link>
         <p className={styles.eyebrow}>Выбирайте по настроению</p>
-        <h1>Кухня и кофе.</h1>
+        <h2 id="menu-title">Что вам приготовить?</h2>
         <p className={styles.subtitle}>
           Для завтрака, встречи и паузы посреди дня.
         </p>
@@ -110,21 +104,22 @@ export function MenuPage() {
         </div>
         <nav className={styles.categories} aria-label="Категории меню">
           {categories.map((c) => (
-            <Link
+            <button
+              type="button"
               key={c.id}
-              to={"/menu#" + c.id}
               onClick={() => {
                 setQuery("");
                 setActiveId(c.id);
+                requestAnimationFrame(() => document.getElementById(c.id)?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "start" }));
               }}
               aria-current={activeId === c.id ? "location" : undefined}
             >
               {c.title}
-            </Link>
+            </button>
           ))}
         </nav>
       </div>
-      <div className={styles.content}>
+      <div className={styles.content} key={type}>
         <p className={styles.note}>
           Меню по данным от 31 августа 2026. Наличие и актуальные цены уточняйте
           в кофейне.
