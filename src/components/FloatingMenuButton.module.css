@@ -22,8 +22,8 @@
 }
 .floating a:first-child {
   background: var(--color-accent);
-  color: var(--color-text-light);
-  border-color: var(--color-accent);
+  color: var(--color-text);
+  border-color: var(--color-accent-ink);
 }
 @media (min-width: 1024px) {
   .floating {

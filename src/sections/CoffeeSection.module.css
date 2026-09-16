@@ -1,6 +1,7 @@
 .section {
   background: var(--color-accent);
-  color: #f6f3eb;
+  color: var(--color-text);
+  background-image: radial-gradient(ellipse at 15% 15%, #e3edc655, transparent 65%);
   padding: clamp(44px, 7vw, 96px) var(--space-inline);
 }
 .inner {
@@ -21,10 +22,10 @@
 .photo figcaption {
   font-size: 11px;
   margin-top: 12px;
-  color: #dedfce;
+  color: #39462f;
 }
 .copy > p:first-child {
-  color: #dedfce;
+  color: #39462f;
 }
 .copy h2 {
   font-size: clamp(44px, 5vw, 70px);
@@ -35,7 +36,7 @@
 }
 .text {
   margin-top: 28px;
-  color: #e5e7db;
+  color: #39462f;
   font-size: 16px;
   line-height: 1.8;
 }
@@ -43,8 +44,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px 22px;
-  border-top: 1px solid #ffffff35;
-  border-bottom: 1px solid #ffffff35;
+  border-top: 1px solid #46573540;
+  border-bottom: 1px solid #46573540;
   padding: 18px 0;
   margin-top: 28px;
   font-size: 13px;
@@ -52,12 +53,12 @@
 .note {
   margin-top: 25px;
   font-size: 13px;
-  color: #dedfce;
+  color: #39462f;
 }
 .link {
   display: inline-flex;
   gap: 44px;
-  border-bottom: 1px solid #ffffff60;
+  border-bottom: 1px solid #46573580;
   padding: 10px 0;
   margin-top: 16px;
   font-size: 14px;

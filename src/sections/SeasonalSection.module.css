@@ -15,7 +15,7 @@
   font-family: var(--font-ui);
   font-variant-numeric: tabular-nums;
   font-size: var(--text-small);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 
 .cardDesc {

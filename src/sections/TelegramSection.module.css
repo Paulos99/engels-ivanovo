@@ -1,6 +1,6 @@
 .section {
   padding: 40px var(--space-inline);
-  background: var(--color-bg-alt);
+  background: var(--color-accent-soft);
 }
 .inner {
   max-width: 1060px;
@@ -14,13 +14,13 @@
   font-style: italic;
   font-size: 90px;
   line-height: 1;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 .label {
   font-size: 11px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   margin-bottom: 8px;
 }
 .inner h2 {

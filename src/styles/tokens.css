@@ -5,8 +5,11 @@
   --color-text: #292d25;
   --color-text-muted: #686b60;
   --color-text-light: #f6f3ec;
-  --color-accent: #47543d;
-  --color-wood: #8b7355;
+  --color-accent: #b2c487;
+  --color-accent-ink: #465735;
+  --color-accent-soft: #e7edda;
+  --color-wood: #cdb99a;
+  --color-stone: #777b78;
   --color-border: rgba(26, 25, 23, 0.1);
   --color-border-strong: rgba(26, 25, 23, 0.18);
 

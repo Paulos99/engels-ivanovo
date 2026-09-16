@@ -14,7 +14,7 @@
   font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   margin-bottom: 38px;
 }
 .title {
@@ -31,7 +31,7 @@
   font-weight: 400;
 }
 .title i {
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   font-weight: 400;
 }
 .description {
@@ -74,10 +74,21 @@
 }
 .media {
   position: relative;
+  isolation: isolate;
   margin: 0;
   width: 100%;
   max-width: 450px;
   justify-self: end;
+}
+.media::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -12px -12px 20px 22px;
+  border-radius: 170px 170px 6px 6px;
+  background: var(--color-stone) url("../assets/mineral-stone.svg") repeat;
+  background-size: 500px 500px;
+  box-shadow: 0 12px 32px #34393415;
 }
 .media > div {
   aspect-ratio: 9 / 14 !important;

@@ -91,6 +91,7 @@ try {
   const result = await build({
     stdin: { contents: code, resolveDir: process.cwd(), loader: "tsx" },
     bundle: true,
+    loader: { ".svg": "dataurl" },
     platform: "node",
     format: "esm",
     packages: "external",

@@ -1,3 +1,10 @@
+.material {
+  background-color: #e9ddc9;
+  background-image: linear-gradient(#f6f3ec38, #f6f3ec38), url("../assets/wood-grain.svg");
+  background-size: auto, 720px 720px;
+  border-block: 1px solid #b7a38245;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
@@ -5,13 +12,13 @@
 }
 .copy i {
   font-weight: 400;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
 }
 .badge {
   display: inline-block;
   margin-top: 22px;
   font-size: 13px;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   border-bottom: 1px solid var(--color-border-strong);
   padding-bottom: 5px;
 }

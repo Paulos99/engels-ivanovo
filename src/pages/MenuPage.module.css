@@ -17,7 +17,7 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   margin-bottom: 14px;
 }
 .header h2 {
@@ -57,7 +57,7 @@
   border-radius: 3px;
 }
 .switcher button[aria-pressed="true"] {
-  color: var(--color-text-light);
+  color: var(--color-text);
   background: var(--color-accent);
 }
 .search {
@@ -92,7 +92,7 @@
 }
 .categories button[aria-current],
 .categories button:hover {
-  border-color: var(--color-accent);
+  border-color: var(--color-accent-ink);
   color: var(--color-text);
 }
 .content {
@@ -163,7 +163,7 @@
 }
 .empty button {
   text-decoration: underline;
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   padding: 12px 0;
 }
 @media (max-width: 767px) {

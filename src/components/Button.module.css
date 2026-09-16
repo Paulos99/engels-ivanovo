@@ -21,7 +21,7 @@
 .primary {
   composes: button;
   background: var(--color-accent);
-  color: var(--color-text-light);
+  color: var(--color-text);
 }
 
 .primary:hover {
@@ -55,7 +55,7 @@
   text-transform: none;
   letter-spacing: 0.02em;
   font-size: var(--text-small);
-  color: var(--color-accent);
+  color: var(--color-accent-ink);
   border-radius: 0;
   text-decoration: underline;
   text-underline-offset: 4px;

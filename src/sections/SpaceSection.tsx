@@ -4,7 +4,7 @@ import shared from "../styles/shared.module.css";
 import styles from "./SpaceSection.module.css";
 export function SpaceSection() {
   return (
-    <section className={shared.section} id="space">
+    <section className={`${shared.section} ${styles.material}`} id="space">
       <div className={shared.container}>
         <div className={styles.grid}>
           <ScrollReveal>

@@ -1,7 +1,9 @@
 .footer {
   padding: clamp(3rem, 6vw, 4.5rem) var(--space-inline);
-  background: var(--color-bg-dark);
-  color: rgba(250, 248, 245, 0.55);
+  background-color: var(--color-stone);
+  background-image: linear-gradient(#20262387, #20262387), url("../assets/mineral-stone.svg");
+  background-size: auto, 640px 640px;
+  color: #f0f1eb;
 }
 
 .inner {

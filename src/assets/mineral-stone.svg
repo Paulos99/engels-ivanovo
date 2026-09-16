@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640">
+<filter id="rock"><feTurbulence type="fractalNoise" baseFrequency=".065" numOctaves="4" seed="27" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope=".38"/></feComponentTransfer><feBlend in="SourceGraphic" mode="soft-light"/></filter>
+<path fill="#737975" filter="url(#rock)" d="M0 0h640v640H0z"/>
+<g fill="#eef1e9" opacity=".4"><path d="m43 61 2-4 1 5-2 2zM185 38l3-2-1 4zM389 109l2-3 2 3-2 2zM568 72l3 1-2 3zM111 226l2-3 1 4zM280 180l4-2-1 4zM503 258l2-4 2 4zM59 419l3-2-1 5zM205 363l2-3 2 4zM415 406l3-1-2 4zM607 381l2-2 1 3zM139 556l2-3 2 4zM320 608l2-4 2 3zM543 531l3-3-1 5z"/></g>
+</svg>
