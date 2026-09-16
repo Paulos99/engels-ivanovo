@@ -1,6 +1,6 @@
 .section {
-  background: #747774 url("../assets/mountain-stone-v2.webp") center / cover;
-  color: #fff;
+  background: var(--color-accent-soft);
+  color: var(--color-text);
   padding: clamp(44px, 7vw, 96px) var(--space-inline);
 }
 .inner {
@@ -8,14 +8,10 @@
   margin: auto;
   display: grid;
   grid-template-columns: 0.8fr 1fr;
-  gap: clamp(28px, 5vw, 72px);
+  gap: clamp(36px, 8vw, 120px);
   align-items: center;
 }
 .photo {
-  padding: 16px;
-  background: var(--color-bg);
-  box-shadow: 0 20px 50px #131a1440;
-  transform: rotate(-2deg);
   margin: 0;
   max-width: 370px;
 }
@@ -25,10 +21,10 @@
 .photo figcaption {
   font-size: 11px;
   margin-top: 12px;
-  color: var(--color-text-muted);
+  color: var(--color-accent-ink);
 }
 .copy > p:first-child {
-  color: #fff;
+  color: var(--color-accent-ink);
 }
 .copy h2 {
   font-size: clamp(44px, 5vw, 70px);
@@ -39,7 +35,7 @@
 }
 .text {
   margin-top: 28px;
-  color: #fff;
+  color: var(--color-text-muted);
   font-size: 16px;
   line-height: 1.8;
 }
@@ -47,8 +43,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 12px 22px;
-  border-top: 1px solid #ffffff50;
-  border-bottom: 1px solid #ffffff50;
+  border-top: 1px solid var(--color-border-strong);
+  border-bottom: 1px solid var(--color-border-strong);
   padding: 18px 0;
   margin-top: 28px;
   font-size: 13px;
@@ -56,12 +52,12 @@
 .note {
   margin-top: 25px;
   font-size: 13px;
-  color: #fff;
+  color: var(--color-accent-ink);
 }
 .link {
   display: inline-flex;
   gap: 44px;
-  border-bottom: 1px solid #ffffff80;
+  border-bottom: 1px solid var(--color-accent-ink);
   padding: 10px 0;
   margin-top: 16px;
   font-size: 14px;
@@ -81,5 +77,6 @@
   }
 }
 
-.copy { padding: clamp(28px, 4vw, 52px); background: var(--color-accent); box-shadow: 0 22px 60px #141d2340; border-radius: 2px 2px 70px 2px; }
-@media (max-width: 767px) { .section { padding-block: 52px; } .copy { padding: 28px 24px 36px; border-radius: 2px 2px 46px 2px; } .photo { margin-top: 8px; } }
+.photo > div { border-radius: 2px 100px 2px 2px; }
+.copy { padding-block: 16px; }
+.link { background: var(--color-accent); padding: 13px 20px; border: 0; border-radius: 2px; color: var(--color-text); }

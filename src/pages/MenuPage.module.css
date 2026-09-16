@@ -57,7 +57,7 @@
   border-radius: 3px;
 }
 .switcher button[aria-pressed="true"] {
-  color: #fff;
+  color: var(--color-text);
   background: var(--color-accent);
 }
 .search {
