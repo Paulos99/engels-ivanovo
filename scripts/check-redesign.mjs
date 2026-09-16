@@ -63,6 +63,14 @@ if (process.env.ENGELS_QA_DOM) {
  await act(async()=>root.unmount());
  const appRoot=createRoot(document.getElementById('root'));
  await act(async()=>appRoot.render(React.createElement(MemoryRouter,{initialEntries:['/']},React.createElement(App))));
+ const brewing=document.querySelector('[aria-label="Способ заваривания"]');
+ assert.equal(brewing.querySelectorAll('button').length,4);
+ await act(async()=>[...brewing.querySelectorAll('button')].find(b=>b.textContent.includes('Аэропресс')).click());
+ assert(document.getElementById('brew-description').textContent.includes('настаивается'));
+ assert.equal(brewing.querySelectorAll('[aria-pressed="true"]').length,1);
+ await act(async()=>[...brewing.querySelectorAll('button')].find(b=>b.textContent.includes('Воронка')).click());
+ assert(document.getElementById('brew-description').textContent.includes('Ручной фильтр-метод'));
+ assert(document.querySelector('a[href="/#menu-filter"]'));
  const menuLink=[...document.querySelectorAll('a')].find(a=>a.textContent.includes('Открыть меню'));
  await act(async()=>menuLink.click());
  assert(document.querySelector('dialog[aria-labelledby="menu-title"]').open);
