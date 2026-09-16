@@ -1,74 +1,50 @@
-import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { siteConfig } from '../data/site-config'
-import { publicUrl } from '../utils/publicUrl'
-import styles from './Header.module.css'
-
-const navItems = [
-  { label: 'Кофе', href: '/#coffee' },
-  { label: 'Гастрономия', href: '/#food' },
-  { label: 'Пространство', href: '/#space' },
-  { label: 'Меню', href: '/menu' },
-  { label: 'Контакты', href: '/#contacts' },
-]
-
-interface HeaderProps {
-  onMenuOpen: () => void
-  menuOpen: boolean
+import { Link, useLocation } from "react-router-dom";
+import { navItems } from "./navigation";
+import styles from "./Header.module.css";
+interface Props {
+  onMenuOpen: () => void;
+  menuOpen: boolean;
 }
-
-export function Header({ onMenuOpen, menuOpen }: HeaderProps) {
-  const [scrolled, setScrolled] = useState(false)
-  const location = useLocation()
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
+export function Header({ onMenuOpen, menuOpen }: Props) {
+  const { pathname } = useLocation();
   return (
-    <header
-      className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${location.pathname === '/' && !scrolled ? styles.light : ''}`}
-    >
+    <header className={styles.header}>
+      <a className={styles.skip} href="#main-content">
+        К содержимому
+      </a>
       <div className={styles.inner}>
         <Link to="/" className={styles.logo} aria-label="Энгельс — на главную">
-          <img
-            src={publicUrl('logo.jpg')}
-            alt=""
-            className={styles.logoImg}
-            onError={(e) => {
-              e.currentTarget.style.display = 'none'
-            }}
-          />
-          {siteConfig.name}
+          энгельс<span>кофе и кухня</span>
         </Link>
-
         <nav className={styles.nav} aria-label="Основная навигация">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
-              href={item.href}
-              className={`${styles.navLink} ${location.pathname === '/menu' && item.href === '/menu' ? styles.navActive : ''}`}
+              to={item.href}
+              className={styles.navLink}
+              aria-current={
+                pathname === "/menu" && item.href === "/menu"
+                  ? "page"
+                  : undefined
+              }
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
-
+        <span className={styles.city}>Иваново / Шереметевский, 52</span>
         <button
           type="button"
-          className={`${styles.menuBtn} ${menuOpen ? styles.open : ''}`}
+          className={styles.menuBtn}
           onClick={onMenuOpen}
-          aria-label={menuOpen ? 'Закрыть меню' : 'Открыть меню'}
+          aria-label={menuOpen ? "Закрыть навигацию" : "Открыть навигацию"}
           aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
         >
-          <span />
           <span />
           <span />
         </button>
       </div>
     </header>
-  )
+  );
 }

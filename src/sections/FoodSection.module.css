@@ -1,35 +1,109 @@
-.gallery {
+.heading {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.875rem, 2vw, 1.25rem);
-  margin-top: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 44px;
 }
-
-@media (max-width: 767px) {
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-    gap: 0.875rem;
-  }
-
-  .gallery > *:first-child {
-    grid-column: 1 / -1;
-  }
+.heading h2 {
+  margin-bottom: 0;
 }
-
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 2rem;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--color-border);
-  font-family: var(--font-ui);
-  font-size: var(--text-small);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+.heading i {
+  font-weight: 400;
+  color: var(--color-accent);
+}
+.menuLink {
+  display: inline-flex;
+  gap: 40px;
+  border-bottom: 1px solid var(--color-border-strong);
+  padding: 14px 0 8px;
+  font-size: 14px;
+}
+.body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 70px);
+  align-items: start;
+}
+.photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  padding-top: 22px;
+}
+.photos figure {
+  margin: 0;
+  min-width: 0;
+}
+.photos figure:nth-child(2) {
+  margin-top: 76px;
+}
+.photos figcaption {
+  font-size: 12px;
+  margin-top: 12px;
   color: var(--color-text-muted);
 }
-
-.actions {
-  margin-top: 2.5rem;
+.label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--color-border-strong);
+  color: var(--color-accent);
+}
+.pick {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4px 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--color-border);
+  transition: color 0.2s;
+}
+.pick:hover {
+  color: var(--color-accent);
+}
+.note {
+  grid-column: 1/-1;
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+.pick h3 {
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.price {
+  font-size: 13px;
+  white-space: nowrap;
+  align-self: center;
+}
+.price span {
+  margin-left: 12px;
+}
+.fine {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  margin-top: 16px;
+}
+@media (max-width: 767px) {
+  .heading,
+  .body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .heading {
+    margin-bottom: 26px;
+  }
+  .photos {
+    max-width: 420px;
+    padding-top: 0;
+  }
+  .photos figure:nth-child(2) {
+    margin-top: 36px;
+  }
+  .pick h3 {
+    font-size: 16px;
+  }
 }

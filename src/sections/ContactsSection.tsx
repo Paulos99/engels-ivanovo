@@ -1,8 +1,8 @@
-import shared from '../styles/shared.module.css'
-import styles from './ContactsSection.module.css'
-import { ScrollReveal } from '../components/ScrollReveal'
-import { Button } from '../components/Button'
-import { siteConfig } from '../data/site-config'
+import shared from "../styles/shared.module.css";
+import styles from "./ContactsSection.module.css";
+import { ScrollReveal } from "../components/ScrollReveal";
+import { Button } from "../components/Button";
+import { siteConfig } from "../data/site-config";
 
 export function ContactsSection() {
   return (
@@ -10,7 +10,7 @@ export function ContactsSection() {
       <div className={shared.container}>
         <ScrollReveal>
           <p className={shared.eyebrow}>Контакты</p>
-          <h2 className={shared.title}>Как нас найти</h2>
+          <h2 className={shared.title}>До встречи на Шереметевском.</h2>
         </ScrollReveal>
         <div className={styles.grid}>
           <ScrollReveal>
@@ -21,14 +21,16 @@ export function ContactsSection() {
                 <br />
                 {siteConfig.address.city}
               </p>
-              <h3 className={styles.groupTitle} style={{ marginTop: '1.5rem' }}>
+              <h3 className={styles.groupTitle} style={{ marginTop: "1.5rem" }}>
                 Часы работы
               </h3>
               <p className={styles.row}>
-                {siteConfig.hours.weekdays.label}: {siteConfig.hours.weekdays.time}
+                {siteConfig.hours.weekdays.label}:{" "}
+                {siteConfig.hours.weekdays.time}
               </p>
               <p className={styles.row}>
-                {siteConfig.hours.weekend.label}: {siteConfig.hours.weekend.time}
+                {siteConfig.hours.weekend.label}:{" "}
+                {siteConfig.hours.weekend.time}
               </p>
               {siteConfig.features.dogFriendly && (
                 <span className={styles.badge}>Можно с собакой</span>
@@ -86,6 +88,15 @@ export function ContactsSection() {
             </div>
           </ScrollReveal>
         </div>
+        <p className={styles.reviewLink}>
+          <a
+            href={siteConfig.links.yandexReviews}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Почитать отзывы гостей на Яндекс Картах ↗
+          </a>
+        </p>
         <div className={styles.actions}>
           <Button href={siteConfig.links.route} variant="primary" external>
             Построить маршрут
@@ -96,5 +107,5 @@ export function ContactsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -52,3 +52,10 @@
   gap: 1rem;
   margin-top: 2rem;
 }
+
+.reviewLink {
+  margin-top: 32px;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}

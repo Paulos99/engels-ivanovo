@@ -34,3 +34,9 @@ npm run preview
 ## Документация
 
 См. папку `docs/` — brand research, art direction, UX/UI/technical specs.
+
+## Доработка сентября 2026
+
+Актуальное описание изменений, проверки и ограничения: [docs/redesign-2026-09.md](docs/redesign-2026-09.md).
+
+Проверка: `npm run check`. Сборка для GitHub Pages: `GITHUB_PAGES=true npm run build`.

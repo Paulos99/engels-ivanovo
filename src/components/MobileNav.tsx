@@ -1,40 +1,61 @@
-import { Button } from './Button'
-import styles from './MobileNav.module.css'
-
-const navItems = [
-  { label: 'Кофе', href: '/#coffee' },
-  { label: 'Гастрономия', href: '/#food' },
-  { label: 'Пространство', href: '/#space' },
-  { label: 'Меню', href: '/menu' },
-  { label: 'Контакты', href: '/#contacts' },
-]
-
-interface MobileNavProps {
-  open: boolean
-  onClose: () => void
+import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { navItems } from "./navigation";
+import { siteConfig } from "../data/site-config";
+import styles from "./MobileNav.module.css";
+interface Props {
+  open: boolean;
+  onClose: () => void;
 }
-
-export function MobileNav({ open, onClose }: MobileNavProps) {
+export function MobileNav({ open, onClose }: Props) {
+  const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const dialog = ref.current;
+    if (!dialog) return;
+    if (open && !dialog.open) dialog.showModal();
+    if (!open && dialog.open) dialog.close();
+    const old = document.body.style.overflow;
+    if (open) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = old;
+    };
+  }, [open]);
   return (
-    <nav
-      className={`${styles.overlay} ${open ? styles.open : ''}`}
-      aria-label="Мобильное меню"
-      aria-hidden={!open}
+    <dialog
+      ref={ref}
+      id="mobile-navigation"
+      className={styles.dialog}
+      aria-label="Навигация по сайту"
+      onCancel={onClose}
+      onClose={onClose}
     >
-      <ul className={styles.list}>
-        {navItems.map((item) => (
-          <li key={item.href}>
-            <a href={item.href} className={styles.link} onClick={onClose}>
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <div className={styles.menuCta}>
-        <Button to="/menu" variant="primary" onClick={onClose}>
-          Смотреть меню
-        </Button>
+      <div className={styles.top}>
+        <span>Энгельс</span>
+        <button
+          type="button"
+          onClick={onClose}
+          aria-label="Закрыть навигацию"
+          autoFocus
+        >
+          ×
+        </button>
       </div>
-    </nav>
-  )
+      <nav aria-label="Мобильная навигация">
+        {navItems.map((item, i) => (
+          <Link
+            key={item.href}
+            to={item.href}
+            onClick={onClose}
+            className={styles.link}
+          >
+            <small>0{i + 1}</small>
+            {item.label}
+            <span aria-hidden="true">↗</span>
+          </Link>
+        ))}
+      </nav>
+      <p className={styles.address}>{siteConfig.address.full}</p>
+      <a href={siteConfig.phoneHref}>{siteConfig.phone}</a>
+    </dialog>
+  );
 }

@@ -1,27 +1,57 @@
-import { siteConfig } from '../data/site-config'
-import { Button } from '../components/Button'
-import { PlaceholderImage } from '../components/PlaceholderImage'
-import styles from './HeroSection.module.css'
-
+import { siteConfig } from "../data/site-config";
+import { Button } from "../components/Button";
+import { PlaceholderImage } from "../components/PlaceholderImage";
+import styles from "./HeroSection.module.css";
 export function HeroSection() {
   return (
-    <section className={styles.hero} id="hero" aria-label="Первый экран">
-      <div className={styles.media}>
-        <PlaceholderImage slot="hero" priority />
-      </div>
+    <section
+      className={styles.hero}
+      id="hero"
+      aria-label="Энгельс — гастрокофейня в Иванове"
+    >
       <div className={styles.content}>
-        <h1 className={styles.title}>{siteConfig.name}</h1>
-        <p className={styles.tagline}>{siteConfig.tagline}</p>
-        <p className={styles.address}>{siteConfig.address.street}</p>
+        <p className={styles.eyebrow}>Иваново · Гастрокофейня</p>
+        <h1 className={styles.title}>
+          Энгельс
+          <span>
+            Вкус. Свет.
+            <br />
+            <i>Ваше время.</i>
+          </span>
+        </h1>
+        <p className={styles.description}>
+          Спешелти-кофе, завтраки и авторская кухня.
+          <br />
+          Заходите на Шереметевский, 52.
+        </p>
         <div className={styles.actions}>
-          <Button to="/menu" variant="primary">
-            Смотреть меню
+          <Button to="/menu">
+            Открыть меню <span aria-hidden="true">↗</span>
           </Button>
-          <Button href={siteConfig.links.route} variant="ghostLight" external>
-            Построить маршрут
-          </Button>
+          <a
+            href={siteConfig.links.route}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.route}
+          >
+            Как добраться <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div className={styles.bottom}>
+          <span>
+            Место у окна.
+            <br />
+            Кофе по вашему вкусу.
+          </span>
+          <a href="#food" aria-label="Перейти к кухне">
+            Листайте ниже <span aria-hidden="true">↓</span>
+          </a>
         </div>
       </div>
+      <figure className={styles.media}>
+        <PlaceholderImage slot="hero" priority />
+        <figcaption>Светлый зал, дерево и вид на город</figcaption>
+      </figure>
     </section>
-  )
+  );
 }

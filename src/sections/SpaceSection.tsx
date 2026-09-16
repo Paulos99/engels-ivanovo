@@ -1,40 +1,44 @@
-import shared from '../styles/shared.module.css'
-import styles from './SpaceSection.module.css'
-import { ScrollReveal } from '../components/ScrollReveal'
-import { PlaceholderImage } from '../components/PlaceholderImage'
-import { siteConfig } from '../data/site-config'
-
-const details = ['свет', 'дерево', 'бонсай', 'барная стойка', 'материалы', 'детали']
-
+import { PlaceholderImage } from "../components/PlaceholderImage";
+import { ScrollReveal } from "../components/ScrollReveal";
+import shared from "../styles/shared.module.css";
+import styles from "./SpaceSection.module.css";
 export function SpaceSection() {
   return (
-    <section className={shared.sectionAlt} id="space">
+    <section className={shared.section} id="space">
       <div className={shared.container}>
-        <ScrollReveal>
-          <div className={styles.wideImage}>
-            <PlaceholderImage slot="space-wide" hoverable />
-          </div>
-        </ScrollReveal>
-        <div className={shared.gridTwo} style={{ marginTop: 'clamp(2rem, 5vw, 4rem)' }}>
+        <div className={styles.grid}>
           <ScrollReveal>
-            <p className={shared.eyebrow}>Пространство</p>
-            <h2 className={shared.title}>Место, в котором остаются</h2>
-            <p className={shared.text}>{siteConfig.copy.space}</p>
-            <blockquote className={styles.quote}>{siteConfig.copy.spaceQuote}</blockquote>
-          </ScrollReveal>
-          <ScrollReveal>
-            <div className={styles.images}>
-              <PlaceholderImage slot="interior-main" hoverable className={styles.full} />
-              <PlaceholderImage slot="interior-detail" hoverable className={styles.detail} />
+            <div className={styles.copy}>
+              <p className={shared.eyebrow}>03 / Пространство</p>
+              <h2 className={shared.title}>
+                Останьтесь
+                <br />
+                <i>ещё немного.</i>
+              </h2>
+              <p className={shared.text}>
+                Большие окна на Шереметевский, тёплое дерево и бонсай у барной
+                стойки. Выберите место для разговора, завтрака вдвоём или чашки
+                кофе наедине с собой.
+              </p>
+              <span className={styles.badge}>Можно с собакой</span>
+              <figure className={styles.detail}>
+                <PlaceholderImage slot="interior-detail" />
+                <figcaption>Детали, которые замечаешь не сразу</figcaption>
+              </figure>
             </div>
-            <ul className={styles.details}>
-              {details.map((d) => (
-                <li key={d}>{d}</li>
-              ))}
-            </ul>
           </ScrollReveal>
+          <div className={styles.photos}>
+            <figure>
+              <PlaceholderImage slot="interior-main" />
+              <figcaption>Дерево и мягкий свет</figcaption>
+            </figure>
+            <figure>
+              <PlaceholderImage slot="space-wide" />
+              <figcaption>Ваше место у окна</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
-  )
+  );
 }

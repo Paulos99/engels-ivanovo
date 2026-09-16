@@ -1,90 +1,175 @@
-import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import styles from './MenuPage.module.css'
-import { menuCategories, getItemsByCategory, formatPrice } from '../data/menu'
-
+import { useEffect, useMemo, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { menuCategories, menuItems, formatPrice } from "../data/menu";
+import styles from "./MenuPage.module.css";
+type MenuType = "kitchen" | "bar";
 export function MenuPage() {
-  const location = useLocation()
-  const [activeId, setActiveId] = useState<string>('')
-
+  const location = useLocation(),
+    navigate = useNavigate();
+  const categoryFromHash = menuCategories.find(
+    (c) => c.id === location.hash.slice(1),
+  );
+  const [type, setType] = useState<MenuType>(
+    categoryFromHash?.type ?? "kitchen",
+  );
+  const [query, setQuery] = useState("");
+  const [activeId, setActiveId] = useState(categoryFromHash?.id ?? "");
+  const normalize = (value: string) =>
+    value.toLocaleLowerCase("ru").replaceAll("ё", "е").trim();
+  const categories = menuCategories.filter((c) => c.type === type);
+  const groups = useMemo(
+    () =>
+      menuCategories
+        .filter((c) => c.type === type)
+        .map((category) => ({
+          category,
+          items: menuItems.filter(
+            (i) =>
+              i.available &&
+              i.category === category.id &&
+              normalize(i.name + " " + (i.description ?? "")).includes(
+                normalize(query),
+              ),
+          ),
+        }))
+        .filter((g) => g.items.length),
+    [type, query],
+  );
   useEffect(() => {
-    if (location.hash) {
-      const id = location.hash.slice(1)
-      setActiveId(id)
-      const el = document.getElementById(id)
-      if (el) {
-        setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100)
-      }
+    const c = menuCategories.find((c) => c.id === location.hash.slice(1));
+    if (c) {
+      setType(c.type);
+      setQuery("");
+      setActiveId(c.id);
     }
-  }, [location.hash])
-
+  }, [location.hash]);
   useEffect(() => {
-    const sections = menuCategories.map((c) => document.getElementById(c.id)).filter(Boolean)
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]
-        if (visible?.target.id) setActiveId(visible.target.id)
-      },
-      { rootMargin: '-40% 0px -50% 0px', threshold: [0, 0.25, 0.5] },
-    )
-
-    sections.forEach((s) => s && observer.observe(s))
-    return () => observer.disconnect()
-  }, [])
-
+    if (!location.hash || query) return;
+    const frame = requestAnimationFrame(() =>
+      document
+        .getElementById(location.hash.slice(1))
+        ?.scrollIntoView({
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "instant"
+            : "smooth",
+        }),
+    );
+    return () => cancelAnimationFrame(frame);
+  }, [location.hash, type, query]);
+  function changeType(next: MenuType) {
+    setType(next);
+    setQuery("");
+    setActiveId("");
+    navigate("/menu", { replace: true });
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
   return (
     <div className={styles.page}>
       <header className={styles.header}>
-        <Link to="/" className={styles.back}>
-          ← На главную
+        <Link className={styles.back} to="/">
+          ← В «Энгельс»
         </Link>
-        <h1 className={styles.title}>Меню</h1>
-        <p className={styles.subtitle}>Кухня и бар</p>
+        <p className={styles.eyebrow}>Выбирайте по настроению</p>
+        <h1>Кухня и кофе.</h1>
+        <p className={styles.subtitle}>
+          Для завтрака, встречи и паузы посреди дня.
+        </p>
       </header>
-
-      <nav className={styles.nav} aria-label="Категории меню">
-        <div className={styles.navInner}>
-          {menuCategories.map((cat) => (
-            <a
-              key={cat.id}
-              href={`#${cat.id}`}
-              className={`${styles.navLink} ${activeId === cat.id ? styles.navActive : ''}`}
+      <div className={styles.controls}>
+        <div className={styles.controlsInner}>
+          <div
+            className={styles.switcher}
+            role="group"
+            aria-label="Раздел меню"
+          >
+            <button
+              type="button"
+              aria-pressed={type === "kitchen"}
+              onClick={() => changeType("kitchen")}
             >
-              {cat.title}
-            </a>
-          ))}
+              Кухня
+            </button>
+            <button
+              type="button"
+              aria-pressed={type === "bar"}
+              onClick={() => changeType("bar")}
+            >
+              Напитки
+            </button>
+          </div>
+          <label className={styles.search}>
+            <span className="sr-only">Поиск в выбранном разделе</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={type === "kitchen" ? "Найти блюдо" : "Найти напиток"}
+            />
+          </label>
         </div>
-      </nav>
-
-      <main className={styles.content}>
-        {menuCategories.map((cat) => {
-          const items = getItemsByCategory(cat.id)
-          if (items.length === 0) return null
-
-          return (
-            <section key={cat.id} id={cat.id} className={styles.section}>
-              <p className={styles.sectionType}>
-                {cat.type === 'bar' ? 'Бар' : 'Кухня'}
-              </p>
-              <h2 className={styles.sectionTitle}>{cat.title}</h2>
-              <ul>
-                {items.map((item) => (
-                  <li key={item.id} className={styles.item}>
-                    <span className={styles.itemName}>{item.name}</span>
-                    <span className={styles.itemPrice}>{formatPrice(item.price)}</span>
-                    {item.description && (
-                      <p className={styles.itemDesc}>{item.description}</p>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </section>
-          )
-        })}
-      </main>
+        <nav className={styles.categories} aria-label="Категории меню">
+          {categories.map((c) => (
+            <Link
+              key={c.id}
+              to={"/menu#" + c.id}
+              onClick={() => {
+                setQuery("");
+                setActiveId(c.id);
+              }}
+              aria-current={activeId === c.id ? "location" : undefined}
+            >
+              {c.title}
+            </Link>
+          ))}
+        </nav>
+      </div>
+      <div className={styles.content}>
+        <p className={styles.note}>
+          Меню по данным от 31 августа 2026. Наличие и актуальные цены уточняйте
+          в кофейне.
+        </p>
+        <p className="sr-only" role="status">
+          Найдено позиций: {groups.reduce((n, g) => n + g.items.length, 0)}
+        </p>
+        {!groups.length && (
+          <div className={styles.empty}>
+            <h2>Ничего не нашлось</h2>
+            <p>
+              Попробуйте другое название или переключитесь на{" "}
+              {type === "kitchen" ? "напитки" : "кухню"}.
+            </p>
+            <button type="button" onClick={() => setQuery("")}>
+              Сбросить поиск
+            </button>
+          </div>
+        )}
+        {groups.map(({ category, items }, index) => (
+          <section
+            className={styles.section}
+            id={category.id}
+            key={category.id}
+          >
+            <div className={styles.sectionHeading}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h2>{category.title}</h2>
+            </div>
+            <ul>
+              {items.map((item) => (
+                <li className={styles.item} key={item.id}>
+                  <div>
+                    <h3>{item.name}</h3>
+                    {item.description && <p>{item.description}</p>}
+                  </div>
+                  <span className={styles.price}>
+                    {formatPrice(item.price)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
