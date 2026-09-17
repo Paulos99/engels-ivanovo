@@ -1,0 +1,32 @@
+.root {
+  display: inline-flex;
+  flex: none;
+}
+
+.horizontal {
+  align-items: center;
+  gap: 0.42em;
+  height: 100%;
+}
+
+.horizontalMark,
+.horizontalWordmark {
+  display: block;
+  width: auto;
+  object-fit: contain;
+}
+
+.horizontalMark {
+  height: 100%;
+}
+
+.horizontalWordmark {
+  height: 64%;
+}
+
+.lockup,
+.mark,
+.wordmark {
+  width: auto;
+  object-fit: contain;
+}

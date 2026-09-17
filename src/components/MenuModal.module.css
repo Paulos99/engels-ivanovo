@@ -19,8 +19,9 @@
 .dialog[data-closing] { animation: closeMenu 220ms ease both; pointer-events: none; }
 .dialog[data-closing]::backdrop { animation: veil 220ms ease reverse both; }
 .top { display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; padding: 10px 28px; border-bottom: 1px solid var(--color-border); background: var(--color-bg); }
-.top > span { font-family: var(--font-heading); font-size: 26px; letter-spacing: -.04em; }
-.top small { font-family: var(--font-body); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; margin-left: 14px; color: var(--color-text-muted); }
+.menuBrand { display: flex; align-items: center; gap: 16px; height: 48px; }
+.menuLogo { height: 46px; }
+.top small { font-family: var(--font-body); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--color-text-muted); }
 .top button { width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; font-size: 30px; color: var(--color-text); background: var(--color-bg-alt, #eae9df); transition: background 180ms; }
 .top button:hover { background: #dbdfd1; }
 .scroll { min-height: 0; overflow-y: auto; overscroll-behavior: contain; flex: 1; scrollbar-gutter: stable; }
@@ -30,6 +31,8 @@
 @media (max-width: 767px) {
   .dialog { width: 100%; height: calc(100dvh - max(12px, env(safe-area-inset-top))); inset: auto 0 0; margin: 0; border-radius: 18px 18px 0 0; border-bottom: 0; }
   .top { padding: 9px 20px; }
+  .menuBrand { height: 44px; gap: 12px; }
+  .menuLogo { height: 42px; }
   .scroll { padding-bottom: env(safe-area-inset-bottom); }
 }
 @media (prefers-reduced-motion: reduce) {

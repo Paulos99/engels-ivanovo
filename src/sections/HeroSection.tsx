@@ -1,5 +1,6 @@
 import { siteConfig } from "../data/site-config";
 import { Button } from "../components/Button";
+import { BrandLogo } from "../components/BrandLogo";
 import { PlaceholderImage } from "../components/PlaceholderImage";
 import styles from "./HeroSection.module.css";
 export function HeroSection() {
@@ -12,7 +13,7 @@ export function HeroSection() {
       <div className={styles.content}>
         <p className={styles.eyebrow}>Иваново · Гастрокофейня</p>
         <h1 className={styles.title}>
-          Энгельс
+          <BrandLogo className={styles.heroLogo} alt="Энгельс" />
           <span>
             Хороший день
             <br />

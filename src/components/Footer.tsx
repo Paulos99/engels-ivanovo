@@ -1,4 +1,5 @@
 import { siteConfig } from '../data/site-config'
+import { BrandLogo } from './BrandLogo'
 import styles from './Footer.module.css'
 
 export function Footer() {
@@ -8,7 +9,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div>
-          <p className={styles.brand}>{siteConfig.name}</p>
+          <BrandLogo variant="lockup" tone="light" className={styles.brand} alt="Энгельс — гастрокофейня" />
           <p className={styles.meta}>{siteConfig.address.full}</p>
         </div>
         <div className={styles.links}>

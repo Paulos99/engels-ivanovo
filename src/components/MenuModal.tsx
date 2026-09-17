@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { MenuPage } from "../pages/MenuPage";
 import { lockScroll } from "../utils/lockScroll";
+import { BrandLogo } from "./BrandLogo";
 import styles from "./MenuModal.module.css";
 
 export const isMenuHash = (hash: string) => hash === "#menu" || hash.startsWith("#menu-");
@@ -69,7 +70,10 @@ export function MenuModal() {
       aria-labelledby="menu-title" onCancel={e => { e.preventDefault(); close(); }}
       onClick={e => { if (e.target === e.currentTarget) { const r = e.currentTarget.getBoundingClientRect(); if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) close(); } }}>
       <div className={styles.top}>
-        <span>энгельс <small>меню</small></span>
+        <div className={styles.menuBrand}>
+          <BrandLogo className={styles.menuLogo} alt="Энгельс" />
+          <small>меню</small>
+        </div>
         <button type="button" onClick={close} aria-label="Закрыть меню" autoFocus><span aria-hidden="true">×</span></button>
       </div>
       <div className={styles.scroll} id="menu-scroll">

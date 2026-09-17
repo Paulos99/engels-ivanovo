@@ -18,18 +18,12 @@
   gap: 24px;
 }
 .logo {
-  font-family: var(--font-display);
-  font-size: 29px;
-  letter-spacing: -0.06em;
-  line-height: 1;
+  display: flex;
+  align-items: center;
+  height: 52px;
 }
-.logo span {
-  display: block;
-  font-family: var(--font-ui);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  margin-top: 7px;
-  text-transform: uppercase;
+.logoArt {
+  height: 50px;
 }
 .nav {
   display: flex;
@@ -78,5 +72,11 @@
   }
   .menuBtn {
     display: block;
+  }
+}
+@media (max-width: 767px) {
+  .logo,
+  .logoArt {
+    height: 46px;
   }
 }

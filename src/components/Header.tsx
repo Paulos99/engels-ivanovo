@@ -1,4 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
+import { BrandLogo } from "./BrandLogo";
 import { navItems } from "./navigation";
 import styles from "./Header.module.css";
 interface Props {
@@ -14,7 +15,7 @@ export function Header({ onMenuOpen, menuOpen }: Props) {
       </a>
       <div className={styles.inner}>
         <Link to="/" className={styles.logo} aria-label="Энгельс — на главную">
-          энгельс<span>кофе и кухня</span>
+          <BrandLogo className={styles.logoArt} alt="Энгельс" />
         </Link>
         <nav className={styles.nav} aria-label="Основная навигация">
           {navItems.map((item) => (
