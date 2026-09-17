@@ -20,7 +20,7 @@
 ### Menu
 - `MenuCategoryNav` — sticky horizontal tabs
 - `MenuCategory` — category heading + items list
-- `MenuItemRow` — name, description, price in one row
+- `MenuItemRow` — название; ниже объёмы через `/`; справа соответствующие цены через `/`. Одинаковые позиции с разными объёмами объединяются в одну строку.
 
 ### Navigation
 - `FloatingMenuButton` — mobile sticky CTA to /menu

@@ -28,6 +28,9 @@ assert(kitchen.includes('Английский завтрак'));
 assert(!kitchen.includes('Эспрессо доппио'));
 const bar=render(React.createElement(MenuPage,{initialCategory:'espresso'}),'/engels-ivanovo/#menu-espresso');
 assert(bar.includes('Эспрессо доппио'));
+assert(bar.includes('200 мл / 300 мл'));
+assert(bar.includes('250 ₽ / 290 ₽'));
+assert.equal((bar.match(/>Капучино</g)||[]).length,1);
 assert(!bar.includes('Английский завтрак'));
 if (process.env.ENGELS_QA_DOM) {
  const { JSDOM } = await import(process.env.ENGELS_QA_DOM);
@@ -55,7 +58,9 @@ if (process.env.ENGELS_QA_DOM) {
  const input=document.querySelector('input');
  const setter=Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype,'value').set;
  await act(async()=>{setter.call(input,'капучино'); input.dispatchEvent(new window.Event('input',{bubbles:true}));});
- assert.equal(document.querySelectorAll('section li').length,2);
+ assert.equal(document.querySelectorAll('section li').length,1);
+ assert(document.body.textContent.includes('200 мл / 300 мл'));
+ assert(document.body.textContent.includes('250 ₽ / 290 ₽'));
  await act(async()=>{setter.call(input,'несуществующийнапиток'); input.dispatchEvent(new window.Event('input',{bubbles:true}));});
  assert(document.body.textContent.includes('Ничего не нашлось'));
  await act(async()=>[...document.querySelectorAll('button')].find(b=>b.textContent==='Сбросить поиск').click());

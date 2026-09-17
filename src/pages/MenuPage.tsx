@@ -3,6 +3,38 @@ import { useEffect, useMemo, useState } from "react";
 import { menuCategories, menuItems, formatPrice } from "../data/menu";
 import styles from "./MenuPage.module.css";
 type MenuType = "kitchen" | "bar";
+
+type MenuRow = {
+  id: string;
+  name: string;
+  descriptions: string[];
+  prices: number[];
+};
+
+function groupMenuRows(items: typeof menuItems): MenuRow[] {
+  const rows = new Map<string, MenuRow>();
+
+  items.forEach((item) => {
+    const key = item.name.toLocaleLowerCase("ru").replaceAll("ё", "е");
+    const row = rows.get(key);
+
+    if (row) {
+      if (item.description) row.descriptions.push(item.description);
+      row.prices.push(item.price);
+      return;
+    }
+
+    rows.set(key, {
+      id: item.id,
+      name: item.name,
+      descriptions: item.description ? [item.description] : [],
+      prices: [item.price],
+    });
+  });
+
+  return [...rows.values()];
+}
+
 export function MenuPage({ initialCategory = "" }: { initialCategory?: string }) {
   const categoryFromHash = menuCategories.find(
     (c) => c.id === initialCategory,
@@ -21,13 +53,15 @@ export function MenuPage({ initialCategory = "" }: { initialCategory?: string })
         .filter((c) => c.type === type)
         .map((category) => ({
           category,
-          items: menuItems.filter(
-            (i) =>
+          items: groupMenuRows(
+            menuItems.filter(
+              (i) =>
               i.available &&
               i.category === category.id &&
               normalize(i.name + " " + (i.description ?? "")).includes(
                 normalize(query),
               ),
+            ),
           ),
         }))
         .filter((g) => g.items.length),
@@ -154,10 +188,12 @@ export function MenuPage({ initialCategory = "" }: { initialCategory?: string })
                 <li className={styles.item} key={item.id}>
                   <div>
                     <h3>{item.name}</h3>
-                    {item.description && <p>{item.description}</p>}
+                    {!!item.descriptions.length && (
+                      <p>{item.descriptions.join(" / ")}</p>
+                    )}
                   </div>
                   <span className={styles.price}>
-                    {formatPrice(item.price)}
+                    {item.prices.map(formatPrice).join(" / ")}
                   </span>
                 </li>
               ))}
