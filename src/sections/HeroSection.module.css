@@ -22,13 +22,9 @@
   line-height: 1;
   letter-spacing: -0.055em;
 }
-.heroLogo {
-  height: clamp(72px, 8vw, 106px);
-  max-width: min(100%, 520px);
-}
 .title > span {
   display: block;
-  margin-top: 28px;
+  margin-top: 0;
   font-size: clamp(38px, 4.3vw, 62px);
   line-height: 1.08;
   letter-spacing: -0.035em;
@@ -114,13 +110,9 @@
   .title {
     font-size: 58px;
   }
-  .heroLogo {
-    height: 64px;
-    max-width: 100%;
-  }
   .title > span {
     font-size: clamp(34px, 9vw, 43px);
-    margin-top: 18px;
+    margin-top: 0;
   }
   .description {
     margin-top: 22px;
